@@ -22,7 +22,7 @@ First of all to imitate corporate network system in our virtual machine we need 
 
 It need to be done in Network settings for both machines.
 
-![[Pasted image 20260426201126.png]]
+![as1](assets/01-01.png)
 
 ### Step - 2. Setting Server IP address
 
