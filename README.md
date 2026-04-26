@@ -38,9 +38,9 @@ This section contains the core practical work for this sprint, including lab set
 
 ## 🚩 Current Objectives
 
+* Analyze post-exploitation activities after a malicious PE execution.
 * Deepening knowledge of Kerberos authentication attacks.
 * Automating log collection via PowerShell.
-* Preparing for SOC L1 interview scenarios.
 
 ---
 
