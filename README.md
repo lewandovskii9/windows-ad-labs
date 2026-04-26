@@ -26,7 +26,7 @@ Focused on host-based analysis, Windows operating system internals, and Active D
 
 This section contains the core practical work for this sprint, including lab setups, attack simulations, and detection methodology.
 
-| #  | Lab                                           | Key Findings & Objectives                                 | Focus Area |
+| #  | Lab                                           | Key Findings                                | Focus Area |
 | -- | ----------------------------------------------------------- | --------------------------------------------------------- | ---------- |
 | 01 | [AD Lab Deployment](./active-directory/setup-lab.md)        | Step-by-step DC & Win10 setup, user creation, forest configuration | Infrastructure |
 | 02 | [Linux Privilege Escalation](./linux/privesc-report.md)     | Exploiting SUID bits and misconfigured file permissions   | Privilege Escalation |
