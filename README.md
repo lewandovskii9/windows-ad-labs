@@ -1,4 +1,4 @@
-# 🪟 Windows Internals & Active Directory Security (SOC Sprint 03)
+# Active Directory
 
 Focused on host-based analysis, Windows operating system internals, and Active Directory security fundamentals. This repository documents the transition from network-level observation to endpoint-level investigation.
 
@@ -13,37 +13,17 @@ Focused on host-based analysis, Windows operating system internals, and Active D
 
 ---
 
-## 🏛 Projects & Laboratories
+## 📁 Labs
 
-### 1. Active Directory Lab Deployment
-* **Objective:** Setting up a scalable lab environment for security testing.
-* **Scope:** Windows Server 2022 (DC) + Windows 10 Enterprise (Target).
-* **Key Findings:** [Step-by-step Setup Guide](./active-directory/setup-lab.md)
-* **Status:** ✅ Completed
+This section contains the core practical work for this sprint, including lab setups, attack simulations, and detection methodology.
 
-### 2. Privilege Escalation Analysis (Linux)
-* **Technique:** SUID Bit Exploitation and misconfigured permissions.
-* **Report:** [Linux PrivEsc Write-up](./linux/privesc-report.md)
-* **Status:** ✅ Completed
-
----
-
-## 📁 Repository Structure
-
-| Folder | Contents | Key Focus |
-| :--- | :--- | :--- |
-| `event-ids/` | [Event Analysis Guide](./event-ids/guide.md) | Detection of Brute-force, PtH, and Kerberoasting. |
-| `powershell/` | [SOC PowerShell Library](./powershell/commands.md) | Practical commands for live incident triage. |
-| `active-directory/` | [AD Attacks & Detection](./active-directory/attacks.md) | Correlating attacker actions with Domain Controller logs. |
-| `linux/` | [Linux Security Basics](./linux/commands.md) | SUID, file permissions, and basic log monitoring. |
-
----
-
-## 🔍 Core SOC Competencies Demonstrated
-
-* **Process Analysis:** Distinguishing between legitimate system processes (`lsass.exe`, `svchost.exe`) and malicious masquerading.
-* **Registry Forensics:** Investigating persistence mechanisms in `Run` and `RunOnce` keys.
-* **Log Correlation:** Mapping Event IDs (**4624**, **4688**, **4769**) to specific stages of the MITRE ATT&CK® framework.
+| #  | Lab                                           | Key Findings & Objectives                                 | Focus Area |
+| -- | ----------------------------------------------------------- | --------------------------------------------------------- | ---------- |
+| 01 | [AD Lab Deployment](./active-directory/setup-lab.md)        | Step-by-step DC & Win10 setup, user creation, forest configuration | Infrastructure |
+| 02 | [Linux Privilege Escalation](./linux/privesc-report.md)     | Exploiting SUID bits and misconfigured file permissions   | Privilege Escalation |
+| 03 | [Event ID Analysis Guide](./event-ids/guide.md)             | Mapping Event IDs (4624, 4688, 4769) to attack stages     | Detection |
+| 04 | [AD Attacks & Detection](./active-directory/attacks.md)     | Simulating Kerberoasting and PtH with log correlation     | Active Directory |
+| 05 | [SOC PowerShell Library](./powershell/commands.md)          | Practical automation for live incident triage and hunting | Tooling |
 
 ---
 
