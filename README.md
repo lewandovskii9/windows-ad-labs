@@ -52,7 +52,7 @@ This section contains the core practical work for this sprint, including lab set
 
 ## 📬 Contact
 
-* **LinkedIn:** [Aldiyar Bulat](https://www.linkedin.com/in/aldiyar-bulat-194478403/)
+* **LinkedIn:** 
 
 ---
 
