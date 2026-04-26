@@ -28,48 +28,48 @@ It need to be done in Network settings for both machines.
 
 To build private network system, for server work it need static IP. So there assign `192.168.1.1` to the Domain Controller. The server points to itself `192.168.1.1`  for DNS resolution to manage the domain locally.
 
-![[Pasted image 20260426201106.png]]
+![as2](assets/01-02.png)
 
 ### Step - 3. AD DS & DNS Role Installation
 
 Giving server AD DS and DNS roles and features, after that in server manager we can confirm roles assigned correctly in left bar.
 
-![[Pasted image 20260426205208.png]]
+![as3](assets/01-03.png)
 
 ### Step - 4. Forest Creation
 
 Finalizing the domain setup, and giving root domain name. For futher proper lab work.
 
-![[Pasted image 20260426205945.png]]
+![as4](assets/01-04.png)
 
 ### Step - 5. Active Directory Inventory (OUs & Users)
 
 For future tests, creating the `HQ` and `Lab-Users` OUs and the `lewa_rob` account.
 
-![[Pasted image 20260426212013.png]]
+![as5](assets/01-05.png)
 
 ### Step - 6. Advanced Audit Policy Configuration
 
  In SOC lab forest, change Audit Policy . To see all events that related with log in events, enabling "Logon/Logoff" audit events for telemetry generation.
 
-![[Pasted image 20260426212812.png]]
+![as6](assets/01-06.png)
 
 
 ### Step - 7. Client Side: DNS & IP Setup
 
 Pointing the workstation to the DC for name resolution. 
 
-   ![[Pasted image 20260426213304.png]]
+   ![as7](assets/01-07.png)
 
 ### Step - 8. Domain Join Success
 
 Successfully bridging the workstation and the controller.
 
-   ![[Pasted image 20260426214541.png]]
+   ![as8](assets/01-08.png)
 
 
 ### Step - 9. Final Session Verification
 
 Proving that a domain user session is active and authenticated.
 
-![[Pasted image 20260426215540.png]]
+![as9](assets/01-09.png)
