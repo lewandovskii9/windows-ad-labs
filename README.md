@@ -48,4 +48,5 @@ This section contains the core practical work for this sprint, including lab set
 All activities were performed in a controlled, isolated lab environment for educational purposes.
 
 ---
+[![Back to Profile](https://img.shields.io/badge/←_Back_to_Profile-grey?style=flat-square)](https://github.com/lewandovskii9)
 *Return to [Main Portfolio](https://github.com/lewandovskii9)*
