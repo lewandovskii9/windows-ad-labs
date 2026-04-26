@@ -13,6 +13,15 @@ Focused on host-based analysis, Windows operating system internals, and Active D
 
 ---
 
+## 🔧 Tools & Techniques
+
+* **Sysinternals:** Process Explorer, Autoruns, Process Monitor (Procmon).
+* **Built-in Tools:** Event Viewer (EVTX), Registry Editor, PowerShell.
+* **Network & AD:** Wireshark (AD protocol analysis), BloodHound (theoretical), Mimikatz (theoretical).
+* **Linux:** SUID/GUID analysis, permission auditing.
+
+---
+
 ## 📁 Labs
 
 This section contains the core practical work for this sprint, including lab setups, attack simulations, and detection methodology.
