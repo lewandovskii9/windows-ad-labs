@@ -44,17 +44,5 @@ This section contains the core practical work for this sprint, including lab set
 
 ---
 
-## 📜 Certifications
-
-* **CompTIA Security+** (In Progress - Expected August 2026)
-
----
-
-## 📬 Contact
-
-* **LinkedIn:** 
-
----
-
 ## ⚠️ Disclaimer
 All activities were performed in a controlled, isolated lab environment for educational purposes.
