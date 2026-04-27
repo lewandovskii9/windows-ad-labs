@@ -70,6 +70,6 @@ Successfully bridging the workstation and the controller.
 
 ### Step - 9. Final Session Verification
 
-Proving that a domain user session is active and authenticated.
+By `whoami all/` command result, it can confirm that a domain user session is active and authenticated.
 
 ![as9](assets/01-09.png)
