@@ -27,10 +27,10 @@ This section contains the core practical work for this sprint, including lab set
 
 | #  | Lab                                                         | Key Findings                                                 | Focus Area |
 | -- | ----------------------------------------------------------- | ------------------------------------------------------------ | ---------- |
-| 01 | [AD Lab Deployment](./active-directory/setup-lab.md)        | Step-by-step DC & Win10 setup, user creation, forest configuration | Infrastructure |
+| 01 | [AD Lab Deployment](./active-directory/setup-lab.md)        | Step-by-step DC 2019 & Win10 setup, user creation, forest configuration | Infrastructure |
 | 02 | [AD Attacks & Detection](./active-directory/ad-attacks-analysis.md)     | Simulating attack techniques and log correlation             | Active Directory |
 | 03 | [Linux Privilege Escalation](./linux/privesc-report.md)     | Exploiting SUID bits and misconfigured file permissions    | Privilege Escalation |
-| 04 | [Event ID Analysis Guide](./event-ids/guide.md)             | Mapping Event IDs (4624, 4688, 4769) to attack stages       | Detection |
+| 04 | [Event ID Analysis Guide](./event-ids/guide.md)             | Mapping Event IDs to attack stages       | Detection |
 
 ---
 
