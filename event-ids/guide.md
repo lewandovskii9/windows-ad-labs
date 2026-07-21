@@ -45,3 +45,7 @@ Key Fields for Analysis (IoCs)
     ServiceName: Displays the target account/service. If this field points to a user account (e.g., sql-service) rather than a computer account (ending with $), it confirms a request for a vulnerable service account.
 
     IpAddress: Indicates the client IP requesting the TGS ticket (e.g., ::ffff:192.168.1.50). Compare this IP against inventory to determine if the host is a recognized domain machine or an unauthorized device.
+
+Detection & Anomaly Logic
+
+Legitimate service ticket requests utilize AES encryption (0x12) and originate from standard domain workstations. Kerberoasting attacks stand out because they explicitly request RC4 encryption (0x17) for non-computer service accounts, often sweeping multiple SPNs within seconds from a single IP address.
