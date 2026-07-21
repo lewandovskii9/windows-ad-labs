@@ -38,7 +38,6 @@ This section contains the core practical work for this sprint, including lab set
 
 * Analyze post-exploitation activities after a malicious PE execution.
 * Deepening knowledge of Kerberos authentication attacks.
-* Developing SIEM correlation rules for Active Directory anomalies.
 
 ---
 
