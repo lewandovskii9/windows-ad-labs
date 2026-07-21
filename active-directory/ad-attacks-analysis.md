@@ -66,6 +66,9 @@ IoC:
 2. EventRecordID: 5118
 3. Access Mask: 0x100
 
+
+[Back to Top](#active-directory-attack--detection-lab)
+
 ---
 
 ## 2. Kerberoasting
@@ -139,6 +142,11 @@ Local Indicators
    
 3. **Disable RC4 encryption** for Kerberos TGS requests.
 
+
+[Back to Top](#active-directory-attack--detection-lab)
+
 ---
 
 ## 3. Pass-the-Hash
+
+[Back to Top](#active-directory-attack--detection-lab)
