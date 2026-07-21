@@ -49,3 +49,27 @@ Key Fields for Analysis (IoCs)
 Detection & Anomaly Logic
 
 Legitimate service ticket requests utilize AES encryption (0x12) and originate from standard domain workstations. Kerberoasting attacks stand out because they explicitly request RC4 encryption (0x17) for non-computer service accounts, often sweeping multiple SPNs within seconds from a single IP address.
+
+---
+
+Event ID 4624: An account was successfully logged on (NTLM / PtH Focus)
+
+    Category / Source: Security / Logon/Logoff
+
+    MITRE ATT&CK Mapping: Lateral Movement ➔ Use Alternate Authentication Material: Pass the Hash (T1550.002)
+
+    Real-World Analogy: Showing a hotel keycard at the front desk that was cloned in a lab rather than showing your photo ID to get a new room key.
+
+    Description: Generated whenever an account authenticates to a local or remote system. During Pass-the-Hash, this event captures NTLM network logons originating from external or non-domain assets.
+
+Key Fields for Analysis (IoCs)
+
+    LogonType: Look for 3 (Network logon, e.g., accessing SMB shares) or 9 (NewCredentials, typical when tools like Mimikatz/Impacket spawn processes under explicit credentials).
+
+    AuthenticationPackageName: Displays NTLmSsp or NTLM. Domain-joined environments normally rely on Kerberos. A sudden shift to NTLM for domain admins is a strong indicator of PtH.
+
+    WorkstationName / IpAddress: Indicates the source machine (192.168.1.50). If the workstation name is blank or doesn't match Active Directory naming conventions, it suggests an unmanaged/attacker machine.
+
+Detection & Anomaly Logic
+
+In a modern Active Directory network, domain administrators should authenticate via Kerberos. Pass-the-Hash bypasses Kerberos and forces NTLM authentication over SMB (TCP 445). Detecting an Event ID 4624 with LogonType: 3 or 9, AuthenticationPackageName: NTLM, and targeting an administrative account from a non-standard IP address provides a high-confidence alert for Pass-the-Hash.
