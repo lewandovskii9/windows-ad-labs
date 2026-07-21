@@ -14,7 +14,7 @@ Event ID 4662: An operation was performed on an object
 
     Description: Active Directory generates this log when an account attempts to access or perform operations on an Active Directory object (such as Domain DNS, Organizational Units, or User objects) if DS Access auditing is enabled.
 
-🔍 Key Fields for Analysis (IoCs)
+Key Fields for Analysis (IoCs)
 
     ObjectType: Look for GUID %{19195a5b-6da0-11d0-afd3-00c04fd930c9}. This specific GUID represents the domainDNS object (the root of the Active Directory domain). Requesting access to the root object usually signifies domain-wide enumeration.
 
@@ -22,9 +22,12 @@ Event ID 4662: An operation was performed on an object
 
     SubjectUserName: Identifies the account initiating the request. Correlate this with recent network logons (Event ID 4624) to verify if the request came from an unexpected host or user.
 
-⚠️ Detection & Anomaly Logic
+Detection & Anomaly Logic
 
 Benign LDAP traffic typically accesses specific user objects, OUs, or computers during standard operation. Malicious activity (e.g., using ldapsearch or automated enumeration tools) generates Event 4662 with an AccessMask of 0x100 targeting the domain root (domainDNS), often triggered repeatedly in a short timeframe from a non-standard workstation IP.
+
+---
+
 Event ID 4769: A Kerberos service ticket was requested
 
     Category / Source: Security / Account Logon
@@ -35,7 +38,7 @@ Event ID 4769: A Kerberos service ticket was requested
 
     Description: Active Directory generates this event on Domain Controllers every time a user requests a Kerberos Service Ticket (TGS) to access a specific network service registered with a Service Principal Name (SPN).
 
-🔍 Key Fields for Analysis (IoCs)
+Key Fields for Analysis (IoCs)
 
     TicketEncryptionType: Look for 0x17 (RC4-HMAC). Modern Windows environments default to AES encryption (0x12 / 0x0e). Requesting 0x17 indicates an intentional downgrade attack performed by tools like Impacket to extract weaker hashes for offline brute-forcing.
 
