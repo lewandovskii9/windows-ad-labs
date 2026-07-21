@@ -1,8 +1,8 @@
 In this report, I simulate and investigate typical AD attacks.
 They goes in order from easy to more complex techniques.
-1. [LDAP Enumeration](#1-ldap-enumeration) 
+**1. [LDAP Enumeration](#1-ldap-enumeration) 
 2. [Kerberoasting](#2-kerberoasting) 
-3. [Pass-the-Hash](#3-pass-the-hash)
+3. [Pass-the-Hash](#3-pass-the-hash)**
 
 Lets begin.
  --
@@ -54,14 +54,14 @@ This simulates a scenario where an external attacker has gained persistence in t
 Result:
 ![at8](assets/at01-08.png)
 
-## SOC Log Analysis
+### SOC Log Analysis
 
 Below is the XML view of the suspicious **Event ID 4662** captured on the Domain Controller.
 ![at9](assets/at01-09.png)
 
 From this XML invesigation it is malicious actions because going request to all DC system(`AccessMask>0x100` it is Read property operation) its strong indicator for (Reconnaissance), because in that way automated tools like ldapsearch, using it to build network map.
 
-IoC:
+#### IoCs :
 1. ObjectType: %{19195a5b-6da0-11d0-afd3-00c04fd930c9}. From microsoft documentation it is domainDNS. Request goal was all DC system.
 2. EventRecordID: 5118
 3. Access Mask: 0x100
@@ -109,7 +109,7 @@ Result :
 
 The adversary exfiltrates the TGS ticket hash for offline password cracking to reveal the service account password.
 
-# SOC Log Analysis
+### SOC Log Analysis
 **EventID 4769** XML-view:
 ![at02-05](assets/at02-05.png)
 
