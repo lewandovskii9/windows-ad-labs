@@ -1,5 +1,5 @@
 In this report, I simulate and investigate typical AD attacks.
-They goes in order from easy to more complex techniques.
+They goes in order from easy to more complex techniques, and demonstrating my skills development.
 
 1. [LDAP Enumeration](#1-ldap-enumeration)
 2. [Kerberoasting](#2-kerberoasting)
@@ -149,5 +149,66 @@ Local Indicators
 ---
 
 ## 3. Pass-the-Hash
+
+### Pre-Attack Setup
+
+To generate Telemetry for investigation, ensure **Audit Logon** and **Audit Special Logon** are set to **Success and Failure** in Group Policy: `Computer Configuration` $\rightarrow$ `Policies` $\rightarrow$ `Windows Settings` $\rightarrow$ `Security Settings` $\rightarrow$ `Advanced Audit Policy Configuration` $\rightarrow$ `Logon/Logoff` $\rightarrow$ **Audit Logon** / **Audit Special Logon**.
+Result:
+![at03-01](assets/at03-01.png)
+
+
+### Attack Simulation
+**Scenario:** Threat actor operates at the *Credential Access* stage after extracting NTLM hashes. The goal is *Lateral Movement* across the Active Directory environment. 
+
+Using the compromised NTLM hash, the attacker authenticates to the target Domain Controller via 
+SMB using Impacket's `smbclient`:
+
+Result:
+![at03-02](assets/at03-02.png)
+
+
+### SOC Log Analysis
+
+**EventID 4624 :** 
+![at03-03](assets/at03-03.png)
+
+**Verdict:** True Positive. EventID 4624 occurs with LogonType 3, with username `sql-service`. Also authentication occur with NTML, its unusual combination to sign in system. Instead of usual Kerberos default protocol.
+Threat actor had credential access and tried lateral movement.
+
+#### IoCs
+
+
+****Subject Indicators**
+
+| Type            | Value   |
+| --------------- | ------- |
+| SubjectUserSid  | S-1-0-0 |
+| SubjectUserName | -       |
+| SubjectLogonId  | 0x0     |
+
+****Target Object Indicators**
+
+| Type             | Value       |
+| ---------------- | ----------- |
+| TargetUserName   | sql-service |
+| TargetDomainName | LEWA9-SOC   |
+| TargetLogonId    | 0x149df1    |
+
+
+****Technical Parameters**
+
+| Type                      | Value          |
+| ------------------------- | -------------- |
+| LogonProcessName          | NtLmSsp        |
+| LogonType                 | 3              |
+| AuthenticationPackageName | NTLM           |
+| Source IP                 | `192.168.1.50` |
+| EventRecordID             | 7102           |
+
+#### Recommended Actions
+
+1. **Change password** for `sql-service`.
+2. **Disable** network sign way into the system.
+3. **Isolate** source host (`192.168.1.50`) from network.
 
 [Back to Top](#active-directory-attack--detection-lab)
