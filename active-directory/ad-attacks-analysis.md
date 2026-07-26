@@ -10,6 +10,10 @@ Lets begin.
  
 ## 1. LDAP Enumeration
 
+### Attack Overview
+
+LDAP Enumeration involves querying the Active Directory Lightweight Directory Access Protocol (LDAP) service to discover domain objects, user accounts, privileged groups, domain computers, and trust relationships. Because any authenticated domain user possesses read access to the Active Directory database by default, an attacker can map out the entire domain structure (using tools like PowerView, ldapsearch, or BloodHound) to identify potential attack paths without requiring administrative privileges.
+
 ### Pre-Attack Setup
 
 We must turn on special audit policy in DC (Domain Controller), to capture event IDs that occur. Without it, DC doesnt show specific event IDs that we want to investigate. You can enable it by modifying the **Default Domain Controllers Policy** (Navigate to: _Advanced Audit Policy Configuration -> Audit Policies -> DS Access -> Audit Directory Service Access_ -> Enable **Success**). After these actions, run `gpupdate /force` to update the group policy.
@@ -73,6 +77,10 @@ From this XML invesigation it is malicious actions because going request to all 
 ---
 
 ## 2. Kerberoasting
+
+### Attack Overview
+
+Kerberoasting targets Domain User accounts that have a Service Principal Name (SPN) assigned (such as sql-service). Any authenticated domain user can request a Kerberos Ticket Granting Service (TGS) ticket for any service in the domain. Because the ticket is encrypted using the target account's NTLM password hash, an attacker can extract the ticket from memory and crack the plaintext password offline (e.g., using Hashcat) without triggering account lockout policies or alerting the target service.
 
 ### Pre-Attack Setup
 Check audit policy to generate telemetry that we want investigate.
@@ -149,6 +157,10 @@ Local Indicators
 ---
 
 ## 3. Pass-the-Hash
+
+### Attack Overview
+
+Pass-the-Hash allows an attacker to authenticate to a remote system or network service using a user's raw NTLM hash instead of their plaintext password. Because Windows authentication protocols (such as NTLM over SMB) validate user identity via challenge-response handshakes based directly on the NTLM hash, possessing the hash is sufficient to spawn privileged processes (e.g., via mimikatz or psexec) and move laterally across the Active Directory domain.
 
 ### Pre-Attack Setup
 
