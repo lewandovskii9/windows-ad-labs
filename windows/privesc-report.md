@@ -31,7 +31,7 @@ Threat actor already in system, and found this folder. Uploaded in malware, and 
 
 First, we search the system using PowerShell to find services where path has spaces and no quotes. We found `VulnerableService` with path `C:\Program Files\My service\service.exe`.
 
-![[Pasted image 20260727175810.png|697]]
+![att](assets/att1.png)
 
 ### Step 2: Exploitation
 
@@ -47,7 +47,7 @@ Commands used:
 
 The service fails with **Error 1053**. This happens because `whoami.exe` is just a simple CLI tool and not a real Windows service. But this error **100% proves** that Windows actually executed our hijacked `C:\Program.exe` file instead of original binary!
 
-![[Pasted image 20260727181159.png]]
+![att](assets/att2.png)
 
 ## 3. SOC Detection
 
@@ -57,13 +57,13 @@ When this fake binary fails to respond like a normal service, Windows Service Co
 
 This event shows that `VulnerableService` failed to start because of error `1053`.
 
-![[Pasted image 20260727183208.png|537]]
+![att](assets/att3.png)
 
 **EventID 7009:**
 
 This event logs a timeout — system waited 30000 ms (30 seconds) for `VulnerableService` to connect, but got no response from `C:\Program.exe`.
 
-![[Pasted image 20260727183318.png|544]]
+![att](assets/att4.png)
 
 #### IoCs
 
