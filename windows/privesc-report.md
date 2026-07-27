@@ -21,9 +21,7 @@ If a low-privileged user has write permissions to any intermediate directory (e.
 
 #### **Scenario :**
 
-Some administrator created folder with wrong rights.
-
-Threat actor already in system, and found this folder. Uploaded in malware, and wait until administrator refresh it.
+An administrator installed software with an unquoted service path and weak folder permissions. A threat actor with low-privileged access finds this path, drops a malicious Program.exe into C:\, and waits for the service to restart or the system to reboot.
 
 ## 2. Attack Simulation
 
@@ -31,7 +29,7 @@ Threat actor already in system, and found this folder. Uploaded in malware, and 
 
 First, we search the system using PowerShell to find services where path has spaces and no quotes. We found `VulnerableService` with path `C:\Program Files\My service\service.exe`.
 
-![att](assets/att1.png)
+![att1](assets/att1.png)
 
 ### Step 2: Exploitation
 
@@ -47,7 +45,7 @@ Commands used:
 
 The service fails with **Error 1053**. This happens because `whoami.exe` is just a simple CLI tool and not a real Windows service. But this error **100% proves** that Windows actually executed our hijacked `C:\Program.exe` file instead of original binary!
 
-![att](assets/att2.png)
+![att2](assets/att2.png)
 
 ## 3. SOC Detection
 
@@ -57,13 +55,13 @@ When this fake binary fails to respond like a normal service, Windows Service Co
 
 This event shows that `VulnerableService` failed to start because of error `1053`.
 
-![att](assets/att3.png)
+![att3](assets/att3.png)
 
 **EventID 7009:**
 
 This event logs a timeout — system waited 30000 ms (30 seconds) for `VulnerableService` to connect, but got no response from `C:\Program.exe`.
 
-![att](assets/att4.png)
+![att4](assets/att4.png)
 
 #### IoCs
 
