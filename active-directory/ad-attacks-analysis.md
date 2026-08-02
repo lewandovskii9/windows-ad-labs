@@ -73,6 +73,13 @@ From this XML invesigation it is malicious actions because going request to all 
 2. EventRecordID: 5118
 3. Access Mask: 0x100
 
+#### MITRE ATT&CK Mapping:
+Reconnaissance ➔ Domain Trust Discovery / Account Discovery (T1087.002)
+
+#### Recommended Actions :
+1 - Disable unencrypted LDAP (Port 389) and mandate LDAPS with LDAP Signing.
+
+
 
 [Back to Top](#active-directory-attack--detection-lab)
 
@@ -144,6 +151,9 @@ Local Indicators
 | Requested SPN        |  `sql-service`              |
 | Encryption Downgrade | `0x17` (RC4)                |
 | Event ID             | 4769                        |
+
+#### MITRE ATT&CK Mapping: 
+Credential Access ➔ Steal or Forge Kerberos Tickets: Kerberoasting (T1558.003)
 
 #### Recommended Actions :
 
@@ -218,6 +228,9 @@ Threat actor had credential access and tried lateral movement.
 | AuthenticationPackageName | NTLM           |
 | Source IP                 | `192.168.1.50` |
 | EventRecordID             | 7102           |
+
+#### MITRE ATT&CK Mapping:
+Lateral Movement ➔ Use Alternate Authentication Material: Pass the Hash (T1550.002)
 
 #### Recommended Actions
 
