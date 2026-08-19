@@ -6,10 +6,8 @@
 
 ## 🛠 Technical Stack
 
-* **Endpoint Monitoring:** Sysinternals Suite (Process Explorer, Autoruns, Procmon), Sysmon.
 * **Log Analysis & Detection:** Windows Event Logs (EVTX), Audit Policy Configuration.
 * **Identity Management:** Active Directory Domain Services (AD DS).
-* **Linux Security:** Privilege Escalation via SUID and weak file permissions.
 
 ---
 
@@ -17,7 +15,7 @@
 
 * **SIEM & Logging:** Event Viewer analysis, Advanced Security Audit Policy tweaking.
 * **Network & AD:** LDAP Enumeration protocols, Kerberos authentication workflows.
-* **System Internals:** Registry auditing, process tracking, SUID binary exploitation.
+* **System Internals:** Registry auditing, process tracking.
 
 ---
 
@@ -34,7 +32,7 @@ This section contains the core practical work for this sprint, including lab set
 
 ---
 
-## 🚩 Current Objectives
+## 🚩 Objectives
 
 * Analyze post-exploitation activities after a malicious PE execution.
 * Deepening knowledge of Kerberos authentication attacks.
